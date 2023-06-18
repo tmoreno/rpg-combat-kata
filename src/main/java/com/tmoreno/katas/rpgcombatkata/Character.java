@@ -41,4 +41,10 @@ public final class Character {
             damagedCharacter.setHealth(damagedCharacter.getHealth() - quantity);
         }
     }
+
+    public void heal(Character healedCharacter, int quantity) {
+        if (!healedCharacter.isAlive()) {
+            throw new HealDeadCharacterException();
+        }
+    }
 }

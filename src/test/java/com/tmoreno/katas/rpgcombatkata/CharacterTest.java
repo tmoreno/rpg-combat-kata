@@ -3,7 +3,6 @@ package com.tmoreno.katas.rpgcombatkata;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatException;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 public class CharacterTest {
@@ -34,6 +33,17 @@ public class CharacterTest {
 
         assertThat(character2.getHealth()).isEqualTo(0);
         assertThat(character2.isAlive()).isFalse();
+    }
+
+    @Test
+    void should_heal_a_character() {
+        Character character1 = new Character();
+        Character character2 = new Character();
+        character1.damageTo(character2, 10);
+
+        character1.heal(character2, 10);
+
+        assertThat(character2.getHealth()).isEqualTo(1000);
     }
 
     @Test

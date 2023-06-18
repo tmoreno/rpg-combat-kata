@@ -9,7 +9,7 @@ public class CharacterTest {
     @Test
     void should_create_a_character_in_initial_state() {
         Character character = new Character();
-        assertThat(character.getHealth()).isEqualTo(100);
+        assertThat(character.getHealth()).isEqualTo(1000);
         assertThat(character.getLevel()).isEqualTo(1);
         assertThat(character.isAlive()).isTrue();
     }
@@ -20,7 +20,7 @@ public class CharacterTest {
         Character character2 = new Character();
         character1.damageTo(character2, 10);
 
-        assertThat(character2.getHealth()).isEqualTo(90);
+        assertThat(character2.getHealth()).isEqualTo(990);
         assertThat(character2.isAlive()).isTrue();
     }
 
@@ -28,7 +28,7 @@ public class CharacterTest {
     void should_die_character_when_damage_exceeds_current_health() {
         Character character1 = new Character();
         Character character2 = new Character();
-        character1.damageTo(character2, 101);
+        character1.damageTo(character2, 1001);
 
         assertThat(character2.getHealth()).isEqualTo(0);
         assertThat(character2.isAlive()).isFalse();

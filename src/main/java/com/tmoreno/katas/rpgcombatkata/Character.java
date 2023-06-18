@@ -7,7 +7,7 @@ public final class Character {
     private boolean alive;
 
     public Character() {
-        health = 100;
+        health = 1000;
         level = 1;
         alive = true;
     }

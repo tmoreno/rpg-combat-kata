@@ -2,12 +2,14 @@ package com.tmoreno.katas.rpgcombatkata;
 
 public final class Character {
 
+    private static final int MAX_HEALTH = 1000;
+
     private int health;
     private final int level;
     private boolean alive;
 
     public Character() {
-        health = 1000;
+        health = MAX_HEALTH;
         level = 1;
         alive = true;
     }
@@ -47,6 +49,6 @@ public final class Character {
             throw new HealDeadCharacterException();
         }
 
-        health = Math.min(health + quantity, 1000);
+        health = Math.min(health + quantity, MAX_HEALTH);
     }
 }

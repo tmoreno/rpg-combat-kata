@@ -4,7 +4,7 @@ public final class Character {
 
     private int health;
     private final int level;
-    private final boolean alive;
+    private boolean alive;
 
     public Character() {
         health = 100;
@@ -28,7 +28,17 @@ public final class Character {
         return alive;
     }
 
+    public void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
     public void damageTo(Character damagedCharacter, int quantity) {
-        damagedCharacter.setHealth(damagedCharacter.getHealth() - quantity);
+        if (quantity > damagedCharacter.getHealth()) {
+            damagedCharacter.setHealth(0);
+            damagedCharacter.setAlive(false);
+        }
+        else {
+            damagedCharacter.setHealth(damagedCharacter.getHealth() - quantity);
+        }
     }
 }

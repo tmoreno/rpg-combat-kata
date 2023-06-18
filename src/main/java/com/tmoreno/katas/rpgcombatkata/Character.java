@@ -2,7 +2,7 @@ package com.tmoreno.katas.rpgcombatkata;
 
 public final class Character {
 
-    private final int health;
+    private int health;
     private final int level;
     private final boolean alive;
 
@@ -16,11 +16,19 @@ public final class Character {
         return health;
     }
 
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
     public int getLevel() {
         return level;
     }
 
     public boolean isAlive() {
         return alive;
+    }
+
+    public void damageTo(Character damagedCharacter, int quantity) {
+        damagedCharacter.setHealth(damagedCharacter.getHealth() - quantity);
     }
 }

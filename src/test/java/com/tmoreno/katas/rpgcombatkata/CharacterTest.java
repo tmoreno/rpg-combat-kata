@@ -11,6 +11,16 @@ public class CharacterTest {
         Character character = new Character();
         assertThat(character.getHealth()).isEqualTo(100);
         assertThat(character.getLevel()).isEqualTo(1);
-        assertThat(character.isAlive()).isEqualTo(true);
+        assertThat(character.isAlive()).isTrue();
+    }
+
+    @Test
+    void should_decrease_health_when_a_character_is_damaged_by_other() {
+        Character character1 = new Character();
+        Character character2 = new Character();
+        character1.damageTo(character2, 10);
+
+        assertThat(character2.getHealth()).isEqualTo(90);
+        assertThat(character2.isAlive()).isTrue();
     }
 }

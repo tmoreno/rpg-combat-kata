@@ -16,10 +16,6 @@ public final class Character {
         return health;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
     public int getLevel() {
         return level;
     }
@@ -43,15 +39,14 @@ public final class Character {
     }
 
     public void heal(Character healedCharacter, int quantity) {
-        if (!healedCharacter.isAlive()) {
+        healedCharacter.increaseHealth(quantity);
+    }
+
+    private void increaseHealth(int quantity) {
+        if (!alive) {
             throw new HealDeadCharacterException();
         }
 
-        if (healedCharacter.getHealth() + quantity > 1000) {
-            healedCharacter.setHealth(1000);
-        }
-        else {
-            healedCharacter.setHealth(healedCharacter.getHealth() + quantity);
-        }
+        health = Math.min(health + quantity, 1000);
     }
 }

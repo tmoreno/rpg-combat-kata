@@ -47,6 +47,11 @@ public final class Character {
             throw new HealDeadCharacterException();
         }
 
-        healedCharacter.setHealth(healedCharacter.getHealth() + quantity);
+        if (healedCharacter.getHealth() + quantity > 1000) {
+            healedCharacter.setHealth(1000);
+        }
+        else {
+            healedCharacter.setHealth(healedCharacter.getHealth() + quantity);
+        }
     }
 }

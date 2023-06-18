@@ -55,4 +55,15 @@ public class CharacterTest {
         assertThatExceptionOfType(HealDeadCharacterException.class)
             .isThrownBy(() -> character1.heal(character2, 10));
     }
+
+    @Test
+    void should_not_has_health_above_1000_after_healing() {
+        Character character1 = new Character();
+        Character character2 = new Character();
+        character1.damageTo(character2, 10);
+
+        character1.heal(character2, 30);
+
+        assertThat(character2.getHealth()).isEqualTo(1000);
+    }
 }

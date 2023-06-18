@@ -28,17 +28,17 @@ public final class Character {
         return alive;
     }
 
-    public void setAlive(boolean alive) {
-        this.alive = alive;
+    public void damageTo(Character damagedCharacter, int quantity) {
+        damagedCharacter.decreaseHealth(quantity);
     }
 
-    public void damageTo(Character damagedCharacter, int quantity) {
-        if (quantity > damagedCharacter.getHealth()) {
-            damagedCharacter.setHealth(0);
-            damagedCharacter.setAlive(false);
+    private void decreaseHealth(int quantity) {
+        if (quantity > health) {
+            health = 0;
+            alive = false;
         }
         else {
-            damagedCharacter.setHealth(damagedCharacter.getHealth() - quantity);
+            health = health - quantity;
         }
     }
 

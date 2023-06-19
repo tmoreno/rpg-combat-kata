@@ -41,6 +41,8 @@ public final class Character {
 
         if (damagedCharacter.getLevel() - level >= 5) {
             quantity = quantity / 2;
+        } else if (level - damagedCharacter.getLevel() >= 5) {
+            quantity = quantity * 2;
         }
         
         damagedCharacter.decreaseHealth(quantity);

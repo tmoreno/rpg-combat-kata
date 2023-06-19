@@ -90,4 +90,20 @@ public class CharacterTest {
 
         assertThat(character2.getHealth()).isEqualTo(975);
     }
+
+    @Test
+    void should_increase_damage_by_50_percent_when_other_character_is_5_or_more_levels_below() {
+        Character character1 = new Character();
+
+        Character character2 = new Character();
+        character2.increaseLevel();
+        character2.increaseLevel();
+        character2.increaseLevel();
+        character2.increaseLevel();
+        character2.increaseLevel();
+
+        character2.damageTo(character1, 50);
+
+        assertThat(character1.getHealth()).isEqualTo(900);
+    }
 }

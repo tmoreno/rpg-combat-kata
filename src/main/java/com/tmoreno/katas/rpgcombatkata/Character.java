@@ -8,7 +8,7 @@ public final class Character {
 
     private final UUID id;
     private int health;
-    private final int level;
+    private int level;
     private boolean alive;
 
     public Character() {
@@ -38,6 +38,10 @@ public final class Character {
         if (damagedCharacter.getId().equals(id)) {
             throw new DamageToItselfException();
         }
+
+        if (damagedCharacter.getLevel() - level >= 5) {
+            quantity = quantity / 2;
+        }
         
         damagedCharacter.decreaseHealth(quantity);
     }
@@ -58,5 +62,9 @@ public final class Character {
         }
 
         health = Math.min(health + quantity, MAX_HEALTH);
+    }
+
+    public void increaseLevel() {
+        level++;
     }
 }

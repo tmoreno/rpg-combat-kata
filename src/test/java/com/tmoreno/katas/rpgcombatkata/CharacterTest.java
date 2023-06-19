@@ -74,4 +74,20 @@ public class CharacterTest {
         assertThatExceptionOfType(DamageToItselfException.class)
                 .isThrownBy(() -> character1.damageTo(character1, 10));
     }
+
+    @Test
+    void should_reduce_damage_to_50_percent_when_other_character_is_5_or_more_levels_above() {
+        Character character1 = new Character();
+
+        Character character2 = new Character();
+        character2.increaseLevel();
+        character2.increaseLevel();
+        character2.increaseLevel();
+        character2.increaseLevel();
+        character2.increaseLevel();
+
+        character1.damageTo(character2, 50);
+
+        assertThat(character2.getHealth()).isEqualTo(975);
+    }
 }

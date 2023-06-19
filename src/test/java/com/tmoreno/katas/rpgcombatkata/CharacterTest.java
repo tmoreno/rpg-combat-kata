@@ -66,4 +66,12 @@ public class CharacterTest {
 
         assertThat(character2.getHealth()).isEqualTo(1000);
     }
+
+    @Test
+    void should_not_damage_to_itself() {
+        Character character1 = new Character();
+
+        assertThatExceptionOfType(DamageToItselfException.class)
+                .isThrownBy(() -> character1.damageTo(character1, 10));
+    }
 }

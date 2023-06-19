@@ -52,11 +52,7 @@ public final class Character {
         }
     }
 
-    public void heal(Character healedCharacter, int quantity) {
-        healedCharacter.increaseHealth(quantity);
-    }
-
-    private void increaseHealth(int quantity) {
+    public void heal(int quantity) {
         if (!alive) {
             throw new HealDeadCharacterException();
         }

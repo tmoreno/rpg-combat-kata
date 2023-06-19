@@ -41,7 +41,7 @@ public class CharacterTest {
         Character character2 = new Character();
         character1.damageTo(character2, 10);
 
-        character1.heal(character2, 10);
+        character2.heal(10);
 
         assertThat(character2.getHealth()).isEqualTo(1000);
     }
@@ -53,7 +53,7 @@ public class CharacterTest {
         character1.damageTo(character2, 1001);
 
         assertThatExceptionOfType(HealDeadCharacterException.class)
-            .isThrownBy(() -> character1.heal(character2, 10));
+            .isThrownBy(() -> character2.heal(10));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class CharacterTest {
         Character character2 = new Character();
         character1.damageTo(character2, 10);
 
-        character1.heal(character2, 30);
+        character2.heal(30);
 
         assertThat(character2.getHealth()).isEqualTo(1000);
     }
